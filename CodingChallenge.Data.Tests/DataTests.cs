@@ -41,9 +41,8 @@ namespace CodingChallenge.Data.Tests
                 new FormaGeometrica(FormaGeometrica.Cuadrado, 1),
                 new FormaGeometrica(FormaGeometrica.Cuadrado, 3)
             };
-
+            //var cuadrados = DataTestMock.GetConMasUnCuadrado();
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
-
             Assert.AreEqual("<h1>Shapes report</h1>3 Squares | Area 35 | Perimeter 36 <br/>TOTAL:<br/>3 shapes Perimeter 36 Area 35", resumen);
         }
 

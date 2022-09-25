@@ -16,24 +16,25 @@ namespace CodingChallenge.Data.Classes
 {
     public class FormaGeometrica
     {
+        //Entidades
         #region Formas
-
+        // Clase
         public const int Cuadrado = 1;
         public const int TrianguloEquilatero = 2;
         public const int Circulo = 3;
         public const int Trapecio = 4;
 
         #endregion
-
+        //Entidades
         #region Idiomas
-
+        // Clase
         public const int Castellano = 1;
         public const int Ingles = 2;
 
         #endregion
-
+        // propiedad de la entidad formas
         private readonly decimal _lado;
-
+        // propiedad de la entidad formas
         public int Tipo { get; set; }
 
         public FormaGeometrica(int tipo, decimal ancho)
@@ -41,7 +42,7 @@ namespace CodingChallenge.Data.Classes
             Tipo = tipo;
             _lado = ancho;
         }
-
+        //Funcion Principal
         public static string Imprimir(List<FormaGeometrica> formas, int idioma)
         {
             var sb = new StringBuilder();
@@ -111,6 +112,7 @@ namespace CodingChallenge.Data.Classes
             return sb.ToString();
         }
 
+        // Funciones Privadas de reporte
         private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, int tipo, int idioma)
         {
             if (cantidad > 0)
@@ -123,6 +125,7 @@ namespace CodingChallenge.Data.Classes
 
             return string.Empty;
         }
+        // Funciones Privadas de reporte
 
         private static string TraducirForma(int tipo, int cantidad, int idioma)
         {
@@ -142,6 +145,7 @@ namespace CodingChallenge.Data.Classes
             return string.Empty;
         }
 
+        //Funciones relacionadas con las formas
         public decimal CalcularArea()
         {
             switch (Tipo)
