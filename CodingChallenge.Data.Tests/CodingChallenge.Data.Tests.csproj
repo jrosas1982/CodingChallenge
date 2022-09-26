@@ -54,10 +54,6 @@
       <Project>{b21a8f24-c7e0-4e69-b1d7-b424237dc216}</Project>
       <Name>CodingChallenge.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.Challange.Domain\Core.Challange.Domain.csproj">
-      <Project>{6F44C01C-E11B-43C6-9DB3-C1742A6AB58B}</Project>
-      <Name>Core.Challange.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Core.Challenge.Application\Core.Challenge.Application.csproj">
       <Project>{0bbc039d-0695-4d3f-bd70-9cf993872040}</Project>
       <Name>Core.Challenge.Application</Name>

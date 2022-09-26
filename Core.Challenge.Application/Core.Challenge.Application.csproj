@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CodingChallenge.Data\CodingChallenge.Data.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.29" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Core.Challenge.Repository\Core.Challenge.Repository.csproj" />
   </ItemGroup>
 

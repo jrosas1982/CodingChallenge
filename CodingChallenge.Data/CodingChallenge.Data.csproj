@@ -52,23 +52,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregateModels\Shape\Circulo.cs" />
-    <Compile Include="AggregateModels\Shape\Cuadrado.cs" />
+    <Compile Include="Classes\Interfaces\IShapesBasicOperation.cs" />
+    <Compile Include="Classes\Interfaces\IShapesNameTraslator.cs" />
+    <Compile Include="Classes\Languages\Castellano.cs" />
+    <Compile Include="Classes\Languages\Idioma.cs" />
+    <Compile Include="Classes\Languages\Ingles.cs" />
+    <Compile Include="Classes\Languages\Frances.cs" />
+    <Compile Include="Classes\Shapes\Circulo.cs" />
+    <Compile Include="Classes\Shapes\Cuadrado.cs" />
     <Compile Include="Classes\DataTestMock.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
     <Compile Include="Classes\ShapesReportDataMock.cs" />
-    <Compile Include="AggregateModels\Shape\TrianguloEquilatero.cs" />
+    <Compile Include="Classes\Shapes\Rectangulo.cs" />
+    <Compile Include="Classes\Shapes\ShapeBasic.cs" />
+    <Compile Include="Classes\Shapes\ShapeComplex.cs" />
+    <Compile Include="Classes\Shapes\Trapecio.cs" />
+    <Compile Include="Classes\Shapes\TrianguloEquilatero.cs" />
+    <Compile Include="Classes\Utility\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core.Challange.Domain\Core.Challange.Domain.csproj">
-      <Project>{6F44C01C-E11B-43C6-9DB3-C1742A6AB58B}</Project>
-      <Name>Core.Challange.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

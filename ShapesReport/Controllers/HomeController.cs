@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Challenge.Application.Interface;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShapesReport.Models;
 using System;
@@ -12,19 +13,22 @@ namespace ShapesReport.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IShapesReportService _shapesReportService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IShapesReportService shapesReportService)
         {
             _logger = logger;
+            _shapesReportService = shapesReportService;
         }
-
         public IActionResult Index()
         {
+            ViewBag.repoImpreso = _shapesReportService.GetShapesPrinted();
             return View();
         }
 
         public IActionResult Privacy()
         {
+            var hape = _shapesReportService.GetShapes();
             return View();
         }
 
