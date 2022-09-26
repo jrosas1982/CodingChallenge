@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{871B1FBF-7C1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Challenge.Repository", "Core.Challenge.Repository\Core.Challenge.Repository.csproj", "{71A14A80-4CF5-4908-A8F3-B8747F93AD74}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{C103F931-9485-430A-93EF-837D36688BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesReportApi", "ShapesReportApi\ShapesReportApi.csproj", "{8C8DF45D-AE90-457C-B51C-A4B39CABFAD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{71A14A80-4CF5-4908-A8F3-B8747F93AD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A14A80-4CF5-4908-A8F3-B8747F93AD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A14A80-4CF5-4908-A8F3-B8747F93AD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C8DF45D-AE90-457C-B51C-A4B39CABFAD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C8DF45D-AE90-457C-B51C-A4B39CABFAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C8DF45D-AE90-457C-B51C-A4B39CABFAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C8DF45D-AE90-457C-B51C-A4B39CABFAD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{55849A99-5803-40F6-B5CF-68B3810733A3} = {871B1FBF-7C12-4933-A3F2-1E7B50156CEA}
 		{0BBC039D-0695-4D3F-BD70-9CF993872040} = {A442DD30-A31E-4C81-B509-FB09C8203CAE}
 		{71A14A80-4CF5-4908-A8F3-B8747F93AD74} = {A442DD30-A31E-4C81-B509-FB09C8203CAE}
+		{8C8DF45D-AE90-457C-B51C-A4B39CABFAD2} = {C103F931-9485-430A-93EF-837D36688BEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E82C5A93-DECD-498F-B6C1-AB54CE536CAE}
