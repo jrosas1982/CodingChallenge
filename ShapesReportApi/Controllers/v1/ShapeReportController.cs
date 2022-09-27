@@ -1,5 +1,6 @@
 ﻿using CodingChallenge.Data.Classes;
 using Core.Challenge.Application.Interface;
+using Core.Challenge.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
@@ -28,6 +29,12 @@ namespace ShapesReportApi.Controllers.v1
         public IEnumerable<ShapeBasic> Get()
         {
             return _shapesReportService.GetShapes().ToArray();
+        }
+        [HttpGet("GetDetails")]
+        [SwaggerOperation("Retorna todos las formas con detalles")]
+        public IEnumerable<ReportShapesViewModel> GetDetails()
+        {
+            return _shapesReportService.GetReportsShapesViewModel().ToArray();
         }
     }
 }
