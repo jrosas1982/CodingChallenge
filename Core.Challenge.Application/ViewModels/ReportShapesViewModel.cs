@@ -8,10 +8,11 @@ namespace Core.Challenge.Application.ViewModels
 {
     public class ReportShapesViewModel
     {
-       public Idioma idioma { get; set; }
-       public List<ShapeBasic> formas { get; set; }
-       public Dictionary<string, int> Cantidades { get; set; }
-       public Dictionary<string, decimal> Areas { get; set; }
-       public Dictionary<string, decimal> Perimetros { get; set; }
+       public Idioma Idioma { get; set; }
+       public ShapeBasic Forma { get; set; }
+       public int CantidadDeFormas { get; set; }
+       public decimal SumaAreaForma { get; set; }
+       public decimal SumaPerimetroForma { get; set; }
+
     }
 }

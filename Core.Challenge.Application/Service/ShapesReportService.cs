@@ -5,6 +5,7 @@ using System.Text;
 using CodingChallenge.Data.Classes;
 using CodingChallenge.Data.Classes.Languages;
 using Core.Challenge.Application.Interface;
+using Core.Challenge.Application.ViewModels;
 using Core.Challenge.Repository.Shapes;
 
 namespace Core.Challenge.Application.Service
@@ -21,6 +22,26 @@ namespace Core.Challenge.Application.Service
         {
            return _shapeRepository.GetAllShapes();
         }
+        public IEnumerable<ReportShapesViewModel> GetReportsShapesViewModel() {
+
+            return GetShapeInformation(_shapeRepository.GetAllShapes().ToList());
+        }
+        private IEnumerable<ReportShapesViewModel> GetShapeInformation(List<ShapeBasic> formas) {
+            var ShapeInfoList = new List<ReportShapesViewModel>();
+
+            foreach (var i in formas.GroupBy(x => x.Name).ToList())
+            {
+                var ShapeInfo = new ReportShapesViewModel();
+                var tipo = i.Key;
+                ShapeInfo.Forma = i.OfType<ShapeBasic>().FirstOrDefault();
+                ShapeInfo.CantidadDeFormas= i.Where(x => x.Name == tipo).Count();
+                ShapeInfo.SumaAreaForma = i.Where(x => x.Name == tipo).Sum(x => x.GetArea());
+                ShapeInfo.SumaPerimetroForma = i.Where(x => x.Name == tipo).Sum(x => x.GetPerimeter());
+
+                ShapeInfoList.Add(ShapeInfo);
+             }
+            return ShapeInfoList;
+            }
         public string GetShapesPrinted()
         {
            return Imprimir((List<ShapeBasic>)_shapeRepository.GetAllShapes(), new Ingles());
@@ -43,18 +64,12 @@ namespace Core.Challenge.Application.Service
                 Dictionary<string, int> cantidades = new Dictionary<string, int>();
                 Dictionary<string, decimal> areas = new Dictionary<string, decimal>();
                 Dictionary<string, decimal> perimetros = new Dictionary<string, decimal>();
-
-                //1) obtener todos los valores distintos por *nombre* de la lista dada OK
-                //2) para cada uno de ellos contar la *cantidad de objetos distintos* ok
-                //3) *Calcular el Perimietro* para cada Uno de los objetos ok 
-                //4) *Calcular el Area* para cada objeto ok
-
                 //Crea lineas de reporte para cada forma enviada por parametro
                 //BODY 
                 foreach (var i in formas.GroupBy(x => x.Name).ToList())
                 {
                     var tipo = i.Key;
-                    var s = i.OfType<ShapeBasic>().FirstOrDefault();
+                    var TipoDeForma = i.OfType<ShapeBasic>().FirstOrDefault();
                     //Cuenta la cantidad de formas Distintas que recibe de la lista de la función y la agrea a un Diccionario de cantidades
                     cantidades.Add(key: i.Key, value: i.Where(x => x.Name == tipo).Count());
                     //Calcula el **Area para cada forma Distinta que recibe la función y la agrea a un Diccionario de areas
@@ -62,19 +77,16 @@ namespace Core.Challenge.Application.Service
                     //Calcula el **Perimetro para cada forma Distinta que recibe la función y la agrea a un Diccionario de perimetros
                     perimetros.Add(key: i.Key, value: i.Where(x => x.Name == tipo).Sum(x => x.GetPerimeter()));
 
-                    //TODO: cambiar a nombre más declarativo
-                    var cant = cantidades.Where(x => x.Key == tipo).FirstOrDefault().Value;
-                    var are = areas.Where(x => x.Key == tipo).FirstOrDefault().Value;
-                    var peri = perimetros.Where(x => x.Key == tipo).FirstOrDefault().Value;
+                    var CantidadPorForma = cantidades.Where(x => x.Key == tipo).FirstOrDefault().Value;
+                    var AreaTotalPorForma = areas.Where(x => x.Key == tipo).FirstOrDefault().Value;
+                    var PerimetroTotalPorForma = perimetros.Where(x => x.Key == tipo).FirstOrDefault().Value;
 
-                    sb.Append(idioma.GetBody(s,cant, are, peri));
+                    sb.Append(idioma.GetBody(TipoDeForma, CantidadPorForma, AreaTotalPorForma, PerimetroTotalPorForma));
                 }
                 //FOOTER
                 sb.Append(idioma.GetFooter(formas.Count(),idioma, perimetros.Sum(x => x.Value), areas.Sum(x => x.Value)));
             }
             return sb.ToString();
         }
-
-
     }
 }

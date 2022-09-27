@@ -1,4 +1,5 @@
 ﻿using Core.Challenge.Application.Interface;
+using Core.Challenge.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShapesReport.Models;
@@ -26,10 +27,10 @@ namespace ShapesReport.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Report()
         {
-            var hape = _shapesReportService.GetShapes();
-            return View();
+           var reportShapesViewModel = _shapesReportService.GetReportsShapesViewModel();
+            return View(reportShapesViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -2,6 +2,7 @@
 using Core.Challenge.Application.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace ShapesReportApi.Controllers.v1
         }
 
         [HttpGet]
+        [SwaggerOperation("Retorna todos las formas")]
         public IEnumerable<ShapeBasic> Get()
         {
             return _shapesReportService.GetShapes().ToArray();

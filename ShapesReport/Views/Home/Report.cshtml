@@ -1,0 +1,38 @@
+﻿@model List<Core.Challenge.Application.ViewModels.ReportShapesViewModel>
+
+@{
+    ViewData["Title"] = "Reporte";
+    Layout = "_Layout";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h2>Tabla de reporte de formas</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cantidad</th>
+            <th>Forma</th>
+            <th>Area</th>
+            <th>Perimetro</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            Model.FirstOrDefault().Idioma.GetEmptyResult();
+        }  
+        else { 
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CantidadDeFormas</td>
+                    <td>@item.Forma.Name</td>
+                    <td>@item.SumaAreaForma</td>
+                    <td>@item.SumaPerimetroForma</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
