@@ -9,9 +9,9 @@ namespace Core.Challenge.Application.Interface
 {
     public interface IReporteFigurasService
     {
-        IEnumerable<ReporteFigura> GetReportes();
+        IEnumerable<ReporteFigura> GetReportes(ILenguaje idioma);
         ICollection<FiguraGeometrica> GetAll();
-        string GetReporteImprimible();
+        string GetReporteImprimible(ILenguaje idioma);
         string Imprimir(List<FiguraGeometrica> formas, ILenguaje idioma);
 
     }

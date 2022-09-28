@@ -52,10 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\DataTestMock.cs" />
+    <Compile Include="DataMock\DataTestMock.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
-    <Compile Include="Classes\ShapesReportDataMock.cs" />
-    <Compile Include="Classes\Utility\Helper.cs" />
+    <Compile Include="DataMock\ShapesReportDataMock.cs" />
+    <Compile Include="Utility\Helper.cs" />
     <Compile Include="Interface\IFiguraGeometrica.cs" />
     <Compile Include="Interface\ILenguaje.cs" />
     <Compile Include="Interface\ITraductorFiguras.cs" />

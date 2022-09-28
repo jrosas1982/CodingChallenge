@@ -1,18 +1,16 @@
-﻿using CodingChallenge.Data.Classes.Utility;
-using CodingChallenge.Data.Interface;
+﻿using CodingChallenge.Data.Interface;
 using CodingChallenge.Data.Models.Formas;
 using CodingChallenge.Data.Models.Lenguajes;
 using Core.Challenge.Application.Interface;
 using Core.Challenge.Application.ViewModels;
 using Core.Challenge.Repository.Shapes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Core.Challenge.Application.Service
 {
-    public  class ReporteFigurasService :  IReporteFigurasService
+    public class ReporteFigurasService : IReporteFigurasService
     {
         public readonly IShapeRepository _shapeRepository;
         public readonly IReporting _reporting;
@@ -24,17 +22,17 @@ namespace Core.Challenge.Application.Service
         }
         public ICollection<FiguraGeometrica> GetAll()
         {
-           return _shapeRepository.GetAll();
+            return _shapeRepository.GetAll();
         }
-        public IEnumerable<ReporteFigura> GetReportes()
+        public IEnumerable<ReporteFigura> GetReportes(ILenguaje idioma)
         {
-            return GetShapeInformation(GetAll().ToList());
+            return GetShapeInformation(GetAll().ToList(), idioma);
         }
-        public string GetReporteImprimible()
+        public string GetReporteImprimible(ILenguaje idioma)
         {
-           return  Imprimir(GetAll().ToList(), new Frances());
+            return Imprimir(GetAll().ToList(), idioma);
         }
-        private static IEnumerable<ReporteFigura> GetShapeInformation(List<FiguraGeometrica> formas)
+        private static IEnumerable<ReporteFigura> GetShapeInformation(List<FiguraGeometrica> formas, ILenguaje idioma)
         {
             var ShapeInfoList = new List<ReporteFigura>();
 
@@ -42,6 +40,7 @@ namespace Core.Challenge.Application.Service
             {
                 var ShapeInfo = new ReporteFigura();
                 var tipo = i.Key;
+                ShapeInfo.Lenguaje = idioma;
                 ShapeInfo.Figura = i.OfType<FiguraGeometrica>().FirstOrDefault();
                 ShapeInfo.CantidadDeFormas = i.Where(x => x.Name == tipo).Count();
                 ShapeInfo.SumaAreaForma = i.Where(x => x.Name == tipo).Sum(x => x.GetArea());
@@ -51,7 +50,7 @@ namespace Core.Challenge.Application.Service
             }
             return ShapeInfoList;
         }
-    
+
         public string Imprimir(List<FiguraGeometrica> formas, ILenguaje idioma)
         {
             var sb = new StringBuilder();
@@ -64,12 +63,13 @@ namespace Core.Challenge.Application.Service
             {
                 // HEADER
                 sb.Append($"<h1>{idioma.MsjHeader}</h1>");
-                var detalles = GetShapeInformation(formas);
-                decimal sumAreaTotal =0m;
+                var detalles = GetShapeInformation(formas, idioma);
+                decimal sumAreaTotal = 0m;
                 decimal sumPerimetroTotal = 0m;
                 //Body
-                foreach (var d in detalles) {
-                    sb.Append(_reporting.GetBody(d.Figura, idioma , d.CantidadDeFormas, d.SumaAreaForma, d.SumaPerimetroForma));
+                foreach (var d in detalles)
+                {
+                    sb.Append(_reporting.GetBody(d.Figura, idioma, d.CantidadDeFormas, d.SumaAreaForma, d.SumaPerimetroForma));
                     sumAreaTotal += d.SumaAreaForma;
                     sumPerimetroTotal += d.SumaPerimetroForma;
                 }

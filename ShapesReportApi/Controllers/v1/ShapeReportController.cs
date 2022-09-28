@@ -1,4 +1,5 @@
 ﻿using CodingChallenge.Data.Classes;
+using CodingChallenge.Data.Models.Lenguajes;
 using Core.Challenge.Application.Interface;
 using Core.Challenge.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -25,16 +26,16 @@ namespace ShapesReportApi.Controllers.v1
         }
 
         [HttpGet]
-        [SwaggerOperation("Retorna todos las formas")]
+        [SwaggerOperation("Retorna todos las formas en Castellano")]
         public IEnumerable<ReporteFigura> Get()
         {
-            return _reporteFigurasService.GetReportes().ToArray();
+            return _reporteFigurasService.GetReportes(new Castellano()).ToArray();
         }
         [HttpGet("GetDetails")]
-        [SwaggerOperation("Retorna todos las formas con detalles")]
+        [SwaggerOperation("Retorna todos las formas con detalles en Castellano")]
         public IEnumerable<ReporteFigura> GetDetails()
         {
-            return _reporteFigurasService.GetReportes().ToArray();
+            return _reporteFigurasService.GetReportes(new Castellano()).ToArray();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Core.Challenge.Application.Interface;
+﻿using CodingChallenge.Data.Models.Lenguajes;
+using Core.Challenge.Application.Interface;
 using Core.Challenge.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,13 +25,13 @@ namespace ShapesReport.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.repoImpreso = _reporteFigurasService.GetReporteImprimible();
+            ViewBag.repoImpreso = _reporteFigurasService.GetReporteImprimible(new Castellano());
             return View();
         }
 
         public IActionResult Report()
         {
-           var reportShapesViewModel = _reporteFigurasService.GetReportes();
+           var reportShapesViewModel = _reporteFigurasService.GetReportes(new Castellano());
             return View(reportShapesViewModel);
         }
 
