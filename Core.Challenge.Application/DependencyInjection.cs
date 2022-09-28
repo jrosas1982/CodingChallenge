@@ -12,8 +12,9 @@ namespace Core.Challenge.Application
     {
         public static void AddCoreServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient<IShapesReportService, ShapesReportService>();
+            serviceCollection.AddTransient<IReporteFigurasService, ReporteFigurasService>();
             serviceCollection.AddTransient<IShapeRepository, ShapeRepository>();
+            serviceCollection.AddTransient<IReporting, Reporting>();
         }
     }
 }

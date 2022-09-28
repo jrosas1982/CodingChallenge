@@ -52,23 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Interfaces\IShapesBasicOperation.cs" />
-    <Compile Include="Classes\Interfaces\IShapesNameTraslator.cs" />
-    <Compile Include="Classes\Languages\Castellano.cs" />
-    <Compile Include="Classes\Languages\Idioma.cs" />
-    <Compile Include="Classes\Languages\Ingles.cs" />
-    <Compile Include="Classes\Languages\Frances.cs" />
-    <Compile Include="Classes\Shapes\Circulo.cs" />
-    <Compile Include="Classes\Shapes\Cuadrado.cs" />
     <Compile Include="Classes\DataTestMock.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
     <Compile Include="Classes\ShapesReportDataMock.cs" />
-    <Compile Include="Classes\Shapes\Rectangulo.cs" />
-    <Compile Include="Classes\Shapes\ShapeBasic.cs" />
-    <Compile Include="Classes\Shapes\ShapeComplex.cs" />
-    <Compile Include="Classes\Shapes\Trapecio.cs" />
-    <Compile Include="Classes\Shapes\TrianguloEquilatero.cs" />
     <Compile Include="Classes\Utility\Helper.cs" />
+    <Compile Include="Interface\IFiguraGeometrica.cs" />
+    <Compile Include="Interface\ILenguaje.cs" />
+    <Compile Include="Interface\ITraductorFiguras.cs" />
+    <Compile Include="Models\Formas\Circulo.cs" />
+    <Compile Include="Models\Formas\Cuadrado.cs" />
+    <Compile Include="Models\Formas\FiguraGeometrica.cs" />
+    <Compile Include="Models\Formas\Rectangulo.cs" />
+    <Compile Include="Models\Formas\Trapecio.cs" />
+    <Compile Include="Models\Formas\TrianguloEquilatero.cs" />
+    <Compile Include="Models\Lenguajes\Castellano.cs" />
+    <Compile Include="Models\Lenguajes\Frances.cs" />
+    <Compile Include="Models\Lenguajes\Ingles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

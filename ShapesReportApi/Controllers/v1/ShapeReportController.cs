@@ -15,26 +15,26 @@ namespace ShapesReportApi.Controllers.v1
     [Route("v1/[controller]")]
     public class ShapeReportController : ControllerBase
     {
-        private readonly IShapesReportService _shapesReportService;
+        private readonly IReporteFigurasService _reporteFigurasService;
         private readonly ILogger<ShapeReportController> _logger;
 
-        public ShapeReportController(ILogger<ShapeReportController> logger, IShapesReportService shapesReportService)
+        public ShapeReportController(ILogger<ShapeReportController> logger, IReporteFigurasService reporteFigurasService)
         {
             _logger = logger;
-            _shapesReportService = shapesReportService;
+            _reporteFigurasService = reporteFigurasService;
         }
 
         [HttpGet]
         [SwaggerOperation("Retorna todos las formas")]
-        public IEnumerable<ShapeBasic> Get()
+        public IEnumerable<ReporteFigura> Get()
         {
-            return _shapesReportService.GetShapes().ToArray();
+            return _reporteFigurasService.GetReportes().ToArray();
         }
         [HttpGet("GetDetails")]
         [SwaggerOperation("Retorna todos las formas con detalles")]
-        public IEnumerable<ReportShapesViewModel> GetDetails()
+        public IEnumerable<ReporteFigura> GetDetails()
         {
-            return _shapesReportService.GetReportsShapesViewModel().ToArray();
+            return _reporteFigurasService.GetReportes().ToArray();
         }
     }
 }

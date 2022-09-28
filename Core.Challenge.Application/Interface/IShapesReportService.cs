@@ -8,7 +8,7 @@ namespace Core.Challenge.Application.Interface
 {
     public interface IShapesReportService
     {
-        ICollection<ShapeBasic> GetShapes();
+        //ICollection<ShapeBasic> GetShapes();
         string GetShapesPrinted();
         IEnumerable<ReportShapesViewModel> GetReportsShapesViewModel();
     }

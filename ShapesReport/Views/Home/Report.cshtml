@@ -1,5 +1,7 @@
-﻿@model List<Core.Challenge.Application.ViewModels.ReportShapesViewModel>
-
+﻿@model List<Core.Challenge.Application.ViewModels.ReporteFigura>
+@*
+    @model List<Core.Challenge.Application.ViewModels.ReportShapesViewModel>
+*@
 @{
     ViewData["Title"] = "Reporte";
     Layout = "_Layout";
@@ -20,14 +22,14 @@
     <tbody>
         @if (Model == null)
         {
-            Model.FirstOrDefault().Idioma.GetEmptyResult();
+            Model.FirstOrDefault().Lenguaje.MsjListaVacia.ToString();
         }  
         else { 
             @foreach (var item in Model)
             {
                 <tr>
                     <td>@item.CantidadDeFormas</td>
-                    <td>@item.Forma.Name</td>
+                    <td>@item.Figura.Name</td>
                     <td>@item.SumaAreaForma.ToString("#.##")</td>
                     <td>@item.SumaPerimetroForma.ToString("#.##")</td>
                 </tr>

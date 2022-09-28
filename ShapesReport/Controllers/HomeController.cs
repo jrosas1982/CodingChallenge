@@ -14,22 +14,23 @@ namespace ShapesReport.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IShapesReportService _shapesReportService;
+        private readonly IReporteFigurasService _reporteFigurasService;
+       // private readonly IShapesReportService _shapesReportService;
 
-        public HomeController(ILogger<HomeController> logger, IShapesReportService shapesReportService)
+        public HomeController(ILogger<HomeController> logger, IReporteFigurasService reporteFigurasService)
         {
             _logger = logger;
-            _shapesReportService = shapesReportService;
+            _reporteFigurasService = reporteFigurasService;
         }
         public IActionResult Index()
         {
-            ViewBag.repoImpreso = _shapesReportService.GetShapesPrinted();
+            ViewBag.repoImpreso = _reporteFigurasService.GetReporteImprimible();
             return View();
         }
 
         public IActionResult Report()
         {
-           var reportShapesViewModel = _shapesReportService.GetReportsShapesViewModel();
+           var reportShapesViewModel = _reporteFigurasService.GetReportes();
             return View(reportShapesViewModel);
         }
 

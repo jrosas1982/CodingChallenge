@@ -1,25 +1,19 @@
-﻿using CodingChallenge.Data.Classes.Languages;
+﻿using CodingChallenge.Data.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CodingChallenge.Data.Classes
+namespace CodingChallenge.Data.Models.Formas
 {
-    public class Cuadrado : ShapeBasic
+    public class Cuadrado : FiguraGeometrica
     {
-        public override int Id { get; set ; }
         public override string Name => "Cuadrado";
         public override decimal Width { get; set; }
-        public Cuadrado()
-        {
-
-        }
         public override decimal GetArea() => Width * Width;
-        public override decimal GetPerimeter() => Width * 4;
-
-        public override string GetShapeNametraslated(Idioma idioma)
+        public override decimal GetPerimetro() => Width * 4;
+        public override string GetNombreFiguraTraducida(ILenguaje idioma)
         {
-            switch (idioma.Name)
+            switch (idioma.Nombre)
             {
                 case "Ingles":
                     return "Square";
