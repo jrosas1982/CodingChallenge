@@ -72,5 +72,79 @@ namespace CodingChallenge.Data.Tests
                 "<h1>Rapport sur les formes géométriques</h1>2 Carrés | Région 29 | Périmètre 28 <br/>2 Cercles | Région 13,01 | Périmètre 18,06 <br/>3 Triangles | Région 49,64 | Périmètre 51,6 <br/>TOTAL:<br/>7 formes Périmètre 97,66 Région 91,65",
                 resumen);
         }
+        //----- Perimetro -----
+        [TestCase]
+        public void CalcularPerimetroCirculo()
+        {
+            var perimetroCirculo = new List<FiguraGeometrica>() { new Circulo() { Width = 5 } };
+            var Perimetro = perimetroCirculo.FirstOrDefault().GetPerimetro();
+            Assert.AreEqual("15,71", Perimetro.ToString("#.##"));
+        }
+        [TestCase]
+        public void CalcularPerimetroCuadrado()
+        {
+            var perimetroCuadrado = new List<FiguraGeometrica>() { new Cuadrado() { Width = 5} };
+            var Perimetro = perimetroCuadrado.FirstOrDefault().GetPerimetro();
+            Assert.AreEqual(20, Perimetro);
+        }
+
+        [TestCase]
+        public void CalcularPerimetroRectangulo()
+        {
+            var perimetroRectangulo = new List<FiguraGeometrica>() { new Rectangulo() { Width = 5 , Height = 2} };
+            var Perimetro = perimetroRectangulo.FirstOrDefault().GetPerimetro();
+            Assert.AreEqual(14, Perimetro);
+        }
+        [TestCase]
+        public void CalcularPerimetroTrapecio()
+        {
+            var perimetroTrapecio = new List<FiguraGeometrica>() { new Trapecio() { Width_high = 5 , Width_low = 3 , Side_left = 3 , Side_Rigth = 3 , Height = 4} };
+            var Perimetro = perimetroTrapecio.FirstOrDefault().GetPerimetro();
+            Assert.AreEqual(14, Perimetro);
+        }
+        [TestCase]
+        public void CalcularPerimetroTriangulo()
+        {
+            var perimetroTrianguloEquilatero = new List<FiguraGeometrica>() { new TrianguloEquilatero() { Width = 5 } };
+            var Perimetro = perimetroTrianguloEquilatero.FirstOrDefault().GetPerimetro();
+            Assert.AreEqual(15, Perimetro);
+        }
+        //----- Area -----
+        [TestCase]
+        public void CalcularAreaCirculo()
+        {
+            var areaCirculo = new List<FiguraGeometrica>() { new Circulo() { Width = 10 } };
+            var area = areaCirculo.FirstOrDefault().GetArea();
+            Assert.AreEqual("78,54", area.ToString("#.##"));
+        }
+        [TestCase]
+        public void CalcularAreaCuadrado()
+        {
+            var areaCuadrado = new List<FiguraGeometrica>() { new Cuadrado() { Width = 5 } };
+            var area = areaCuadrado.FirstOrDefault().GetArea();
+            Assert.AreEqual(25, area);
+        }
+
+        [TestCase]
+        public void CalcularAreaRectangulo()
+        {
+            var areaRectangulo = new List<FiguraGeometrica>() { new Rectangulo() { Width = 5, Height = 2 } };
+            var area = areaRectangulo.FirstOrDefault().GetArea();
+            Assert.AreEqual(10, area);
+        }
+        [TestCase]
+        public void CalcularAreaTrapecio()
+        {
+            var areaTrapecio = new List<FiguraGeometrica>() { new Trapecio() { Width_high = 5, Width_low = 3, Side_left = 3, Side_Rigth = 3 , Height = 4} };
+            var area = areaTrapecio.FirstOrDefault().GetArea();
+            Assert.AreEqual(16, area);
+        }
+        [TestCase]
+        public void CalcularAreaTriangulo()
+        {
+            var areaTrianguloEquilatero = new List<FiguraGeometrica>() { new TrianguloEquilatero() { Width = 5 } };
+            var area = areaTrianguloEquilatero.FirstOrDefault().GetArea();
+            Assert.AreEqual("10,83", area.ToString("#.##"));
+        }
     }
 }
